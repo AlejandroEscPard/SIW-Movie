@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Artista</title>
+  <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/styles.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="title">
+      <h1>SIW (Sistemi Informativi su Web)</h1>
+      <h2>Roma Tre</h2>
+    </div>
+    <div class="login-section">
+      <a class="logout-button" href="#">Cerrar sesión</a>
+      <a class="login-button" href="#">Iniciar sesión</a>
+    </div>
+  </header>
+
+  <h1>Detalles del Artista</h1>
+
+  <div class="artist-container">
+    <div class="artist-images">
+      <#list artist.images as image>
+        <img src="${image.url}" alt="${artist.nombre} ${artist.apellido}">
+      </#list>
+    </div>
+
+    <div class="artist-details">
+      <h2>${artist.nombre} ${artist.apellido}</h2>
+      <p>Nombre completo: ${artist.nombre} ${artist.apellido}</p>
+      <p>Fecha de Nacimiento: ${artist.fechaNacimiento}</p>
+      <#if artist.fechaMuerte??>
+        <p>Fecha de Muerte: ${artist.fechaMuerte}</p>
+      </#if>
+    </div>
+  </div>
+
+  <footer>
+    <p>Derechos de autor &copy; 2023 SIW (Sistemi Informativi su Web) - Roma Tre. Todos los derechos reservados.</p>
+    <div class="logo">
+      <img src="/src/main/resources/static/images/logoromatre.jpg" alt="Logo de la Universidad de Roma Tre">
+    </div>
+  </footer>
+</body>
+</html>

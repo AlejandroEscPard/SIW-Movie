@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIW-Movie</title>
+  <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/styles.css">
+  <style>
+   .artist-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .artist-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 50%;
+    }
+
+    .artist-link {
+      text-decoration: none;
+      color: inherit;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .add-button {
+      margin-top: 20px;
+      align-self: flex-start;
+      margin-top: 20px;
+
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">
+      <h1>SIW (Sistemi Informativi su Web)</h1>
+      <h2>Roma Tre</h2>
+    </div>
+    <div class="login-section">
+      <a class="logout-button" href="#">Cerrar sesión</a>
+      <a class="login-button" href="#">Iniciar sesión</a>
+    </div>
+  </header>
+
+  <h1>Artistas</h1>
+  <a class="add-button" href="/addDirector.html">Buscar</a>
+  <div class="artist-section">
+    <div class="artist-list">
+      <h2>Actores</h2>
+      <#list actores as actor>
+        <a class="artist-link" href="/artist.html?id=${actor.id}">
+          <div class="artist-container">
+            <img src="${actor.imagen.url}" alt="Foto de ${actor.nombre} ${actor.apellido}">
+            <h3>${actor.nombre}</h3>
+            <p>${actor.apellido}</p>
+          </div>
+        </a>
+      </#list>
+      <a class="add-button" href="/addActorToFilm.html">Añadir Actor</a>
+    </div>
+
+    <div class="artist-list">
+      <h2>Directores</h2>
+      <!-- JPA -->
+      <#list directores as director>
+        <a class="artist-link" href="/artist.html?id=${director.id}">
+          <div class="artist-container">
+            <img src="${director.imagen.url}" alt="Foto de ${director.nombre} ${director.apellido}">
+            <h3>${director.nombre}</h3>
+            <p>${director.apellido}</p>
+          </div>
+        </a>
+      </#list>
+      <a class="add-button" href="/addDirectorToFilm.html">Añadir Director</a>
+    </div>
+  </div>
+
+
+  <footer>
+    <p>Derechos de autor &copy; 2023 SIW (Sistemi Informativi su Web) - Roma Tre. Todos los derechos reservados.</p>
+    <div class="logo">
+      <img src="/src/main/resources/static/images/logoromatre.jpg" alt="Logo de la Universidad de Roma Tre">
+    </div>
+  </footer>
+</body>
+</html>

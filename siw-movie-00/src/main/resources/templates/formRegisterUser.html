@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIW-Movie</title>
+  <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/styles.css">
+  <style>
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    form div {
+      margin-bottom: 10px;
+    }
+
+    form span {
+      display: block;
+    }
+
+    form input[type="text"],
+    form input[type="password"] {
+      width: 200px;
+      padding: 5px;
+    }
+
+    form button[type="submit"] {
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="title">
+      <h1>SIW (Sistemi Informativi su Web)</h1>
+      <h2>Roma Tre</h2>
+    </div>
+    <div class="login-section">
+      <div th:if="${userDetails}">
+        <span th:text="${userDetails.username}"></span>
+        <a href="/logout">Cerrar sesión</a>
+      </div>
+      <div th:unless="${user}">
+        <a href="/login">Iniciar sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="logo">
+    <img src="/src/main/resources/static/images/logo-siw.png" alt="Logo SIW" width="50%">
+  </div>
+
+  <div class="login-container">
+    <h1>Login</h1>
+    <form th:action="@{/login}" method="POST">
+      <div>
+        <span>Username:</span>
+        <span><input name="username" type="text" required></span>
+      </div>
+      <div>
+        <span>Password:</span>
+        <span><input name="password" type="password" required></span>
+      </div>
+      <div>
+        <span th:if="${param.error != null}">Username o password incorrectos</span>
+      </div>
+      <div>
+        <span><button type="submit">Login</button></span>
+      </div>
+    </form>
+    <div>
+      <a th:href="@{/register}" th:text="Registrarse">Registrarse</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Derechos de autor &copy; 2023 SIW (Sistemi Informativi su Web) - Roma Tre. Todos los derechos reservados.</p>
+    <div class="logo">
+      <img src="/src/main/resources/static/images/logoromatre.jpg" alt="Logo de la Universidad de Roma Tre">
+    </div>
+  </footer>
+</body>
+</html>

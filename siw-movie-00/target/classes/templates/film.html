@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Film</title>
+  <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/styles.css">
+  <style>
+        .film-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .film-details {
+      width: 50%;
+    }
+
+    .reviews-section {
+      width: 50%;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="title">
+      <h1>SIW (Sistemi Informativi su Web)</h1>
+      <h2>Roma Tre</h2>
+    </div>
+    <div class="login-section">
+      <!-- Aquí debes añadir lógica para mostrar el botón de inicio de sesión/cierre de sesión -->
+      <!-- Si el usuario ha iniciado sesión, muestra el botón de cierre de sesión -->
+      <a class="logout-button" href="#">Cerrar sesión</a>
+      <!-- Si el usuario no ha iniciado sesión, muestra el botón de inicio de sesión -->
+      <a class="login-button" href="#">Iniciar sesión</a>
+    </div>
+  </header>
+
+    <body>
+        <h1>Detalles de la Película</h1>
+      
+        <div class="film-container">
+          <div class="film-details">
+            <div class="film-images">
+              <#list film.images as image>
+                <img src="${image.url}" alt="${film.Titolo}">
+              </#list>
+            </div>
+            <h2>${film.Titolo}</h2>
+            <p>Año: ${film.AnnoUscita}</p>
+            <p>Descripción: ${film.Descripcione}</p>
+            <p>Director: ${film.registra}</p>
+            <p>Autores:</p>
+            <ul>
+              <#list film.actors as actore>
+                <li>${author.nome}</li>
+              </#list>
+            </ul>
+          </div>
+          
+          <div class="reviews-section">
+            <h2>Reseñas</h2>
+            <#list film.recensioni as rece>
+              <div class="rece">
+                <h3>${rece.Titolo}</h3>
+                <p>Usuario: ${rece.user}</p>
+                <p>Valoracion:${rece.Valutazione}</p>
+                <p>Reseña: ${review.Descripcione}</p>
+              </div>
+            </#list>
+          </div>
+        </div>
+      </body>
+
+  <footer>
+    <p>Derechos de autor &copy; 2023 SIW (Sistemi Informativi su Web) - Roma Tre. Todos los derechos reservados.</p>
+    <div class="logo">
+      <img src="/src/main/resources/static/images/logoromatre.jpg" alt="Logo de la Universidad de Roma Tre">
+    </div>
+  </footer>
+</body>
+</html>
+

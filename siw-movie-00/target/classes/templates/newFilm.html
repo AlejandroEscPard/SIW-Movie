@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Film</title>
+  <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/styles.css">
+  <style>
+        .film-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .film-details {
+      width: 50%;
+    }
+
+    .reviews-section {
+      width: 50%;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="title">
+      <h1>SIW (Sistemi Informativi su Web)</h1>
+      <h2>Roma Tre</h2>
+    </div>
+    <div class="login-section">
+
+      <a class="logout-button" href="#">Cerrar sesión</a>
+      <a class="login-button" href="#">Iniciar sesión</a>
+    </div>
+  </header>
+
+    <h1>Nueva Pelicula</h1>
+    <form>
+      <label for="title">Título:</label>
+      <input type="text" id="title" name="title" required>
+  
+      <label for="year">Año de Salida:</label>
+      <input type="number" id="year" name="year" required>
+  
+      <label for="images">Imágenes:</label>
+      <input type="text" id="images" name="images" required>
+  
+      <label for="authors">Actores:</label>
+      <input type="text" id="authors" name="authors" required>
+  
+      <label for="director">Director:</label>
+      <input type="text" id="director" name="director" required>
+  
+      <input class="submit-button" type="submit" value="Agregar Película">
+    </form>
+
+  
+  <footer>
+    <p>Derechos de autor &copy; 2023 SIW (Sistemi Informativi su Web) - Roma Tre. Todos los derechos reservados.</p>
+    <div class="logo">
+      <img src="/src/main/resources/static/images/logoromatre.jpg" alt="Logo de la Universidad de Roma Tre">
+    </div>
+  </footer>
+</body>
+</html>
+

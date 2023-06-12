@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Films</title>
+  <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/styles.css">
+  <style>
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-buttons">
+      <a class="button" href="/searchFilm.html">Buscar</a>
+      <a class="button" href="/addFilm.html">Añadir</a>
+    </div>
+    <div class="title">
+      <h1>SIW (Sistemi Informativi su Web)</h1>
+      <h2>Roma Tre</h2>
+    </div>
+    <div class="login-section">
+      <a class="logout-button" href="#">Cerrar sesión</a>
+      <a class="login-button" href="#">Iniciar sesión</a>
+    </div>
+  </header>
+
+  <div class="film-list">
+    <!-- Aquí se generarán los divs con los datos de las películas -->
+    <!-- JPA -->
+    <#list films as film>
+      <div class="film-container">
+        <img class="film-image" src="${film.imagePath}" alt="${film.title}">
+        <div class="film-details">
+          <h2>${film.title}</h2>
+          <p>Año: ${film.year}</p>
+          <p>Descripción: ${film.description}</p>
+          <a href="/film.html?id=${film.id}">Ver detalles</a>
+        </div>
+      </div>
+    </#list>
+    <!-- Fin JPA -->
+  </div>
+  <footer>
+    <p>Derechos de autor &copy; 2023 SIW (Sistemi Informativi su Web) - Roma Tre. Todos los derechos reservados.</p>
+    <div class="logo">
+      <img src="/src/main/resources/static/images/logoromatre.jpg" alt="Logo de la Universidad de Roma Tre">
+    </div>
+  </footer>
+</body>
+</html>
+

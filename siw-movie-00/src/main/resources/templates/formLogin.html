@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIW-Movie</title>
+  <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/styles.css">
+  <style>
+
+    .registrati {
+        text-align: center;
+    }
+    form {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    form div {
+      margin-bottom: 10px;
+    }
+
+    form span {
+      display: block;
+    }
+
+    form input[type="text"],
+    form input[type="password"] {
+      width: 200px;
+      padding: 5px;
+    }
+
+    form button[type="submit"] {
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="title">
+      <h1>SIW (Sistemi Informativi su Web)</h1>
+      <h2>Roma Tre</h2>
+    </div>
+    <div class="login-section">
+      <div th:if="${userDetails}">
+        <span th:text="${userDetails.username}"></span>
+        <a href="/logout">Logout</a>
+      </div>
+      <div th:unless="${user}">
+        <a href="/login">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="logo">
+    <img src="/src/main/resources/static/images/logo-siw.png" alt="Logo SIW" width="50%">
+  </div>
+
+  <div class="login-container">
+    <h1 class="registrati">Login</h1>
+    <form th:action="@{/login}" method="POST">
+      <div>
+        <span>Username:</span>
+        <span><input name="username" type="text" required /></span>
+      </div>
+      <div>
+        <span>Password:</span>
+        <span><input name="password" type="password" required /></span>
+      </div>
+      <div>
+        <span th:if="${param.error != null}">Username o password errati</span>
+      </div>
+      <div>
+        <span><button type="submit">Login</button></span>
+      </div>
+    </form>
+    <div class="registrati">
+      <a th:href="@{/register}" th:text="Registrati">Registrati</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>Derechos de autor &copy; 2023 SIW (Sistemi Informativi su Web) - Roma Tre. Todos los derechos reservados.</p>
+    <div class="logo">
+      <img src="/src/main/resources/static/images/logoromatre.jpg" alt="Logo de la Universidad de Roma Tre">
+    </div>
+  </footer>
+</body>
+</html>
