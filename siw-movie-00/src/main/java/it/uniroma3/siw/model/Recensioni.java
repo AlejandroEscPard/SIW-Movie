@@ -16,10 +16,10 @@ public class Recensioni {
 	private long id;
 	
 
-	private String Titolo; //PK
+	private String Titolo; 
 	
-	//@Min(1)
-	//@Max(5)
+	@Min(1)
+	@Max(5)
 	private int Valutazione; // [1-5]
 	@SuppressWarnings("deprecation")
 	@NotNull

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.model.Actore;
 import it.uniroma3.siw.model.Film;
@@ -62,7 +63,7 @@ public class FilmController {
 			model.addAttribute("director", film.getRegistra());
 			model.addAttribute("actors", film.getActore());
 			model.addAttribute("images", film.getImagini());
-			model.addAttribute(attributeName:"recensioni", film.getRecensioni);
+			model.addAttribute("recensioni", film.getRecensioni());
 		}
 		return "film.html";
 	
@@ -78,81 +79,57 @@ public class FilmController {
 		model.addAttribute("registri", registri);
 		return "artists.html";
 	}
-	
 
-	
-	
-	
-	
-	
-
-
-
-
-
-	
 	
 	//forrmNewFilm.html
-	@GetMapping(value="/admin/formNewFilm.html")
+	@GetMapping(value="/admin/films/formNewFilm.html")
 	public String formNewFilm(Model model) {
 		model.addAttribute("film", new Film());
 		return "formNewFilm.html";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	
-	
-	
-	
-	////////////////////////////////////////
-	@PostMapping("/")
+	@PostMapping("/admin/films/newFilm.html")
 	public String saveFilm(Film film) {
 		filmService.saveFilm(film);
 		return "redirect:/artist";
 	}
-	
-	@GetMapping("/artist/{nome}/{cognombre}/delete")
+
+	@GetMapping("/admin/artists/{nome}/{cognombre}")
 	public String deleteFilm(String string) {
 		
-		Film film = filmService.getFilmByNome(string);
+		Film film = filmRepository.findByNomeByNome(string);
 		
 		return "redirect:/artist";
 	}
 	
-	
-	
-	
-	@GetMapping("")
-	public String getAllFilms( Model model) {
-		model.addAttribute("films", filmService.getAllFilms());
-		return "film-list";
-	}
-	
-	
-	@GetMapping("/films/{titolo}")
+		
+	@GetMapping("/admin/films/{titolo}")
 	public String getFilmByNome(@PathVariable("nome") String nome, Model model) {
 		model.addAttribute("film", filmService.getFilmByNome(nome));
-		return "film-detaglio";
+		return "film.html;
+	}
+
+
+	@GetMapping("/admin/films/{AnnoUscita}")
+	public String getFilmByAnnoUscita(@PathVariable("AnnoUscita") int anno, Model model){
+
+		model.addAttribute("films", filmRepository.findByAnnoUscita(anno));
+		return "foundedFilms.html";
 	}
 	
-	@GetMapping("/films/{titolo}/artist")
-	public String getAllActore( @PathVariable("titolo") String titolo, Model model) {
-		model.addAttribute("actore", filmService.getAllActore());
-		return "actore-list";
-	}
+	
+	@GetMapping(value="/admin/setRegistraToFilm/{registraId}/{filmId}")
+	public String setRegistraToFilm@PathVariable("registraId") Long registraId, @PathVariable("filmId") Long filmId, Model model) {
+		Registra registra = this.registraRepository.findById(registraId).get();
+		Film film = this.filmRepository.findById(filmId).get();
 
-	@GetMapping("/films/{titolo}/recensioni")
-	public String getAllRecensioni( @PathVariable("titolo") String titolo, Model model) {
-		model.addAttribute("recensioni", filmService.getAllRecensioni());
-		return "recensioni-list";
+		film.setRegistra(registra);
+		this.registraRepository.save(film);
+		
+		model.addAttribute("film", film);
+		return "admin/films/{Id}.html";
 	}
-
-	*/
+	
+	
 }
+

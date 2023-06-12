@@ -4,12 +4,10 @@ import java.util.Date;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 public class Persona {
@@ -18,10 +16,10 @@ public class Persona {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String Nome; //PK
+	private String Nome; 
 	
 
-	private String Cognome; //PK
+	private String Cognome; 
 	
 	@Column(nullable = false)
 	private Date DataNascita;
@@ -33,7 +31,7 @@ public class Persona {
 	@Column(nullable=false)
 	@OneToOne
 	@JoinColumn(name = "Imagini")
-	private Imagine img; //Como se relaciona?
+	private Imagine img; 
 
 	
 	//Setters and Getters

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FoundedFilms</title>
+  <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/styles.css">
+  <style>
+
+  </style>
+</head>
+<body>
+  <header>
+
+    <div class="title">
+      <h1>SIW (Sistemi Informativi su Web)</h1>
+      <h2>Roma Tre</h2>
+    </div>
+    <div class="login-section">
+        <a class="logout-button" href="index.html">Cerrar sesión</a>
+        <a class="login-button" href="formRegisterUser.html">Iniciar sesión</a>
+      </div>
+  </header>
+
+  <div class="film-list">
+    <#list films as film>
+      <div class="film-container">
+        <img class="film-image" src="${film.imagePath}" alt="${film.titulo}">
+        <div class="film-details">
+          <h2>${film.title}</h2>
+          <p>Año: ${film.year}</p>
+          <p>Descripción: ${film.description}</p>
+          <a href="/film.html?id=${film.id}">Ver detalles</a>
+        </div>
+      </div>
+    </#list>
+  
+  </div>
+  <footer>
+    <p>Derechos de autor &copy; 2023 SIW (Sistemi Informativi su Web) - Roma Tre. Todos los derechos reservados.</p>
+    <div class="logo">
+      <img src="/src/main/resources/static/images/logoromatre.jpg" alt="Logo de la Universidad de Roma Tre">
+    </div>
+  </footer>
+</body>
+</html>
+

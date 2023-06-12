@@ -1,13 +1,12 @@
 package it.uniroma3.siw.model;
 
 
-import jakarta.persistence.Column;
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Imagine")
@@ -18,8 +17,9 @@ public class Imagine {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@NotNull
+	@Nonnull
 	byte[] url;
+
 
 	public byte[] getImagine() {
 		return getImagine();
@@ -28,6 +28,7 @@ public class Imagine {
 	public void setImagine(byte[] imagine) {
 		this.url = imagine;
 	}
+
 
 	public long getId() {
 		return id;
